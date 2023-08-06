@@ -16,7 +16,7 @@ function Home() {
         <div className='flex flex-row h-full overflow-hidden' style={{ backgroundImage: `url(${bg})` }}>
             <Sidebar />
             <div className='ml-[18rem] w-[80%] h-screen'>
-                {id !== null && <h1 className='font-bold text-[#f4f4f4] text-xl mt-4 ml-2 '>Home</h1>}
+                {id !== null && <h1 className='font-bold text-gray-300 text-xl mt-4 ml-2 '>Home</h1>}
                 <div className='flex flex-col justify-center items-center mt-4'>
                     <h1 className='text-gray-300 font-bold text-xl'>Camera angles</h1>
                     <div className='flex flex-row justify-center items-center gap-10 rounded-xl w-80% p-10 mr-7'>

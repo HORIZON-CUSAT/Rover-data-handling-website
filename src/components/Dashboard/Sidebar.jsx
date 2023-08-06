@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
-  const [activeOption, setActiveOption] = useState(0); // Add state for active option
+  const location = useLocation(); // Get the current location
 
   const sidebarOptions = [
     {
       title: "Home",
-      href: "/",
+      href: "/home",
     },
     {
       title: "Mapping",
@@ -18,20 +19,14 @@ const Sidebar = () => {
     },
   ];
 
-  const handleOptionClick = (index) => {
-    setActiveOption(index);
-  };
-
   return (
-    <div
-      className="fixed z-10 w-64 bg-gray-950 h-screen bg-opacity-50  shadow-md rounded-r-2xl border-r border-gray-800"
-    >
+    <div className="fixed z-10 w-64 bg-gray-950 h-screen bg-opacity-50 shadow-md rounded-r-2xl border-r border-gray-800">
       <div className="flex flex-col h-full">
         <div className="flex items-center justify-between p-4">
-          <h2 className="text-xl text-white font-semibold ml-2 mt-4">Horizon Cusat</h2>
-          <button
-            className="text-white p-2 rounded-md"
-          >
+          <h2 className="text-xl text-white font-semibold ml-2 mt-4">
+            Horizon Cusat
+          </h2>
+          <button className="text-white p-2 rounded-md">
             <i className="mdi mdi-close"></i>
           </button>
         </div>
@@ -40,16 +35,15 @@ const Sidebar = () => {
             <li
               key={option.title}
               className={`${
-                activeOption === index ? "bg-gray-900" : "bg-gray-950  bg-opacity-30"
+                location.pathname === option.href ? "bg-gray-900" : "bg-gray-950  bg-opacity-30"
               } p-5 border-b-2 border-black`}
             >
-              <a
-                href={option.href}
+              <NavLink
+                to={option.href}
                 className="text-white hover:text-gray-500 transition-colors duration-300"
-                onClick={() => handleOptionClick(index)}
               >
                 {option.title}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
